@@ -38,7 +38,7 @@ INSTALLED_APPS = [
 
 #my applications
     'account',
-    'psot',
+    'post',
     'group',
     #'friends',
 
