@@ -2,9 +2,22 @@
 
 
 {% block content %}
-  <h1>Home</h1>
+
+<div class="content">
+  <div class="c-title">
+    <h6>Home</h6>
+  </div>
+  <div class="c-content">
+<p>
 {% for item in queryset %}
-    {{ item.id }}-{{ item.email }}<br>
-{% endfor %}
+<br>
+    <a href="{% url 'account:profile' user_id=item.id %}">{{ item.id }}-{{ item.email }}</a>
+{% endfor %}</p>
+  </div>
+
+  <div class="c-pup">
+  </div>
+</div>
+
 
 {% endblock %}

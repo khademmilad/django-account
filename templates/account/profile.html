@@ -1,11 +1,90 @@
 {% extends 'base.html' %}
 
+    <div class="box1">
 
-{% block content %}
-  <h1>Profile</h1>
-  {{ user }}<br>
-  {{ user.email }}<br>
+    {% block content %}
 
-  <img src="{{ user.profile_image.url }}" alt="">
+    <div class="content">
+      <div class="c-title">
+        <h6>Profile</h6>
+      </div>
+      <div class="c-content">
+<p>
+  <img src="{{ profile_image }}" class="img-profile"><br><br>
+  {{ username }}<br><br>
+  {% if hide_email == True %}
+  ***********
 
-{% endblock %}
+{% else %}
+  {{ email }}<br>
+{% endif %}
+
+</p>
+      </div>
+
+      <div class="c-pup">
+        <span>pup date : 15.09.2020</span>
+      </div>
+    </div>
+
+
+    {% endblock %}
+
+    </div>
+
+
+
+
+    {% block arch %}
+
+          <div class="box2">
+            <div class="arch">
+
+{% if request.user.is_authenticated %}
+
+              <div class="arch-title">
+                <span>Friend ( {{friends|length}} )</span>
+              </div>
+
+    {% if friend_requests %}
+
+                  <div class="arch-title">
+                    <span>Friend Requests ({{ friend_requests|length }})</span>
+                  </div>
+
+    {% endif %}
+
+
+
+{% if is_friend == False and is_self == False %}
+  {% if request_sent == 1 %}
+              <div class="arch-title">
+                <button type="button" class="btn btn-outline-danger">Cancel Firend Request</button>
+              </div>
+  {% endif %}
+  {% if request_sent == -1 %}
+              <div class="arch-title">
+                <button type="button" class="btn btn-outline-success">Send Friend Request</button>
+              </div>
+  {% endif %}
+{% endif %}
+
+
+
+  {% if request_sent == 0 %}
+              <div class="arch-title">
+                <button type="button" class="btn btn-outline-success">Accept</button>
+                <button type="button" class="btn btn-outline-danger">Cancel</button>
+                <span>Decline</span>
+              </div>
+  {% endif %}
+
+
+{% endif %}
+
+
+
+            </div>
+          </div>
+
+    {% endblock %}

@@ -1,11 +1,30 @@
 {% extends 'base.html' %}
 
 
-{% block content %}
-<h1>Register</h1>
-<form method="post">{% csrf_token %}
-    {{ form }}
-  <input type="submit" name="" value="Save">
+    <div class="box1">
 
-</form>
-{% endblock %}
+    {% block content %}
+
+    <div class="content">
+      <div class="c-title">
+        <h6>Edit Form</h6>
+      </div>
+      <div class="c-content">
+<p>
+  <form method="post" enctype="multipart/form-data">{% csrf_token %}
+      {{ form.as_p }}
+    <input type="submit" name="" value="Save">
+
+  </form>
+</p>
+      </div>
+
+      <div class="c-pup">
+        <span>pup date : 15.09.2020</span>
+      </div>
+    </div>
+
+
+    {% endblock %}
+
+    </div>
