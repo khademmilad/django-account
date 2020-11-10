@@ -5,7 +5,7 @@ from .models import Account
 from django.http import HttpResponse
 from django.conf import settings
 from django.core import files
-from friend.models import FriendList
+from friend.models import FriendList,FriendRequest
 from friend.utils import get_friend_request_or_false
 from friend.friend_request_status import FriendRequestStatus
 

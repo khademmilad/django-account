@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% if friend_requests %}
+
+
+{% for request in friend_requests %}
+	<div class="content">
+		<div class="c-title">
+			<h6>{{ request.sender.username }}</h6>
+		</div>
+		<div class="c-content">
+
+	<p>
+
+		<div>
+			<img class="img-requests" src="{{request.sender.profile_image.url}}" alt="">
+		</div>
+		<div class="conteinerx">
+
+
+			<span id="id_cancel_{{request.sender.id}}" onclick='triggerDeclineFriendRequest("{{request.id}}")'>cancel</span>
+			<span id="id_confirm_{{request.sender.id}}" onclick='triggerAcceptFriendRequest("{{request.id}}")'>check</span>
+</div>
+	</p>
+		</div>
+	</div>
+
+{% endfor %}
+{% endif %}
+{% if not friend_requests %}
+<div class="content">
+	<div class="c-title">
+		<h6>NO</h6>
+	</div>
+	<div class="c-content">
+
+<p>
+No friends request found!
+
+</p>
+	</div>
+</div>
+{% endif %}
+
+<script type="text/javascript">
+
+	function onFriendRequestAccepted(){
+		location.reload();
+	}
+
+	function onFriendRequestDeclined(){
+		location.reload();
+	}
+
+	function triggerAcceptFriendRequest(friend_request_id){
+		acceptFriendRequest(friend_request_id, onFriendRequestAccepted)
+	}
+
+	function triggerDeclineFriendRequest(friend_request_id){
+		declineFriendRequest(friend_request_id, onFriendRequestDeclined)
+	}
+</script>
+
+{% include 'friend/snippets/accept_friend_request.html' %}
+{% include 'friend/snippets/decline_friend_request.html' %}
+{% endblock %}
