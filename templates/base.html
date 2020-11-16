@@ -37,8 +37,8 @@
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="{% url 'account:profile' user_id=user.id %}">Profile</a>
-            <a class="dropdown-item" href="{% url 'group:create_group' %}">Create group</a>
-            <a class="dropdown-item" href="{% url 'group:groups' %}">All group</a>
+            <!-- <a class="dropdown-item" href="#">Create group</a> -->
+            <!-- <a class="dropdown-item" href="#">All group</a> -->
               <a class="dropdown-item" href="{% url 'account:edit' user_id=user.id %}">Edit Profile</a>
             <a class="nav-item nav-link" href="{% url 'account:logout' %}">Logout</a>
           </div>
